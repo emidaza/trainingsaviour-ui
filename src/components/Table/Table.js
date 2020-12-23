@@ -14,7 +14,7 @@ const useStyles = makeStyles(styles);
 
 export default function CustomTable(props) {
   const classes = useStyles();
-  const { tableHead, tableData, tableHeaderColor } = props;
+  const { tableHead, tableData, tableHeaderColor, tableRows } = props;
   return (
     <div className={classes.tableResponsive}>
       <Table className={classes.table}>
@@ -35,19 +35,22 @@ export default function CustomTable(props) {
           </TableHead>
         ) : null}
         <TableBody>
-          {tableData.map((prop, key) => {
-            return (
-              <TableRow key={key} className={classes.tableBodyRow}>
-                {prop.map((prop, key) => {
-                  return (
-                    <TableCell className={classes.tableCell} key={key}>
-                      {prop}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
-            );
-          })}
+          {
+            tableRows ?
+              tableRows : 
+              tableData.map((prop, key) => {
+                return (
+                  <TableRow key={key} className={classes.tableBodyRow}>
+                    {prop.map((prop, key) => {
+                      return (
+                        <TableCell className={classes.tableCell} key={key}>
+                          {prop}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })}
         </TableBody>
       </Table>
     </div>
@@ -69,5 +72,6 @@ CustomTable.propTypes = {
     "gray"
   ]),
   tableHead: PropTypes.arrayOf(PropTypes.string),
-  tableData: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
+  tableData: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  tableRows: PropTypes.arrayOf(PropTypes.object)
 };
