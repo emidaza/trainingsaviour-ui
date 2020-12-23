@@ -1,21 +1,22 @@
 /*eslint-disable*/
-import React from "react";
-import classNames from "classnames";
-import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
+import Icon from "@material-ui/core/Icon";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Icon from "@material-ui/core/Icon";
+// @material-ui/core components
+import { makeStyles } from "@material-ui/core/styles";
+import styles from "assets/jss/material-dashboard-react/components/sidebarStyle.js";
+import classNames from "classnames";
 // core components
 import AdminNavbarLinks from "components/Navbars/AdminNavbarLinks.js";
 import RTLNavbarLinks from "components/Navbars/RTLNavbarLinks.js";
+import PropTypes from "prop-types";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { CollapsibleMenuItem } from "components/CollapsibleListItem/CollapsibleMenuItem";
 
-import styles from "assets/jss/material-dashboard-react/components/sidebarStyle.js";
 
 const useStyles = makeStyles(styles);
 
@@ -44,46 +45,52 @@ export default function Sidebar(props) {
         const whiteFontClasses = classNames({
           [" " + classes.whiteFont]: activeRoute(prop.layout + prop.path)
         });
-        return (
-          <NavLink
-            to={prop.layout + prop.path}
-            className={activePro + classes.item}
-            activeClassName="active"
-            key={key}
-          >
-            <ListItem button className={classes.itemLink + listItemClasses}>
-              {typeof prop.icon === "string" ? (
-                <Icon
-                  className={classNames(classes.itemIcon, whiteFontClasses, {
-                    [classes.itemIconRTL]: props.rtlActive
+        if (prop.nestedChildrens) {
+          return (
+            <CollapsibleMenuItem menuItem={prop} key={key} color={color} />
+          )
+        } else {
+          return (
+            <NavLink
+              to={prop.layout + prop.path}
+              className={activePro + classes.item}
+              activeClassName="active"
+              key={key}
+            >
+              <ListItem button className={classes.itemLink + listItemClasses}>
+                {typeof prop.icon === "string" ? (
+                  <Icon
+                    className={classNames(classes.itemIcon, whiteFontClasses, {
+                      [classes.itemIconRTL]: props.rtlActive
+                    })}
+                  >
+                    {prop.icon}
+                  </Icon>
+                ) : (
+                    <prop.icon
+                      className={classNames(classes.itemIcon, whiteFontClasses, {
+                        [classes.itemIconRTL]: props.rtlActive
+                      })}
+                    />
+                  )}
+                <ListItemText
+                  primary={props.rtlActive ? prop.rtlName : prop.name}
+                  className={classNames(classes.itemText, whiteFontClasses, {
+                    [classes.itemTextRTL]: props.rtlActive
                   })}
-                >
-                  {prop.icon}
-                </Icon>
-              ) : (
-                <prop.icon
-                  className={classNames(classes.itemIcon, whiteFontClasses, {
-                    [classes.itemIconRTL]: props.rtlActive
-                  })}
+                  disableTypography={true}
                 />
-              )}
-              <ListItemText
-                primary={props.rtlActive ? prop.rtlName : prop.name}
-                className={classNames(classes.itemText, whiteFontClasses, {
-                  [classes.itemTextRTL]: props.rtlActive
-                })}
-                disableTypography={true}
-              />
-            </ListItem>
-          </NavLink>
-        );
+              </ListItem>
+            </NavLink>
+          );
+        }
       })}
     </List>
   );
   var brand = (
     <div className={classes.logo}>
       <a
-        href="https://www.creative-tim.com?ref=mdr-sidebar"
+        href="https://github.com/emidaza"
         className={classNames(classes.logoLink, {
           [classes.logoLinkRTL]: props.rtlActive
         })}
