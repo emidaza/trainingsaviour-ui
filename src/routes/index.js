@@ -28,6 +28,7 @@ import DashboardPage from "views/Dashboard/Dashboard.js";
 import MacroCycle from "views/MacroCycle/macro-cycle.js";
 import MacroCycleList from "views/MacroCycleList/macro-cycle-list";
 import Maps from "views/Maps/Maps.js";
+import MicroCycle from "views/MicroCycle/MicroCycle";
 import NotificationsPage from "views/Notifications/Notifications.js";
 // core components/views for RTL layout
 import RTLPage from "views/RTLPage/RTLPage.js";
@@ -37,14 +38,6 @@ import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
 
 const indexRoutes = [
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    rtlName: "لوحة القيادة",
-    icon: Dashboard,
-    component: DashboardPage,
-    layout: "/admin"
-  },
   {
     name: "Macrociclos",
     icon: "content_paste",
@@ -58,13 +51,30 @@ const indexRoutes = [
         layout: "/admin",
       },
       {
-        path: "/macro-ciclo-form",
+        path: "/macro-ciclo",
         name: "Agregar Macrociclo",
         icon: Person,
         component: MacroCycle,
         layout: "/admin"
       },
     ]
+  },
+  {
+    path: "/micro-ciclo/:microCycleId",
+    name: "Microciclo",
+    rtlName: "Microciclo",
+    icon: "content_paste",
+    component: MicroCycle,
+    layout: "/admin",
+    noSidebar: true
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    rtlName: "لوحة القيادة",
+    icon: Dashboard,
+    component: DashboardPage,
+    layout: "/admin"
   },
   {
     path: "/user",

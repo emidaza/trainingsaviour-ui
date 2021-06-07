@@ -1,6 +1,4 @@
-import { IconButton, TableCell, TableRow } from "@material-ui/core";
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
+
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody";
 import CardHeader from "components/Card/CardHeader";
@@ -9,8 +7,7 @@ import GridItem from "components/Grid/GridItem";
 import Table from "components/Table/Table.js";
 import { API_URLS } from "constants/ApiUrls";
 import React, { useEffect, useState } from "react";
-import * as moment from 'moment';
-import { Link } from "react-router-dom";
+import MacroCycleRow from "./macro-cycle-row";
 
 export default function MacroCycleList() {
     const [macrocycleList, setMacrocycleList] = useState([]);
@@ -38,34 +35,8 @@ export default function MacroCycleList() {
     }, [])
 
     function getRows(dataList) {
-        return dataList.map((macrocycle) => (
-            <TableRow key={macrocycle._id}>
-                <TableCell>
-                    {macrocycle.name}
-                </TableCell>
-                <TableCell >
-                    {macrocycle.initDate ? moment(macrocycle.initDate).format('DD-MM-yyyy') : ''}
-                </TableCell>
-                <TableCell >
-                    {macrocycle.endDate ? moment(macrocycle.endDate).format('DD-MM-yyyy') : ''}
-                </TableCell>
-                <TableCell >
-                    {macrocycle.weekCount}
-                </TableCell>
-                <TableCell>
-                    <Link to={{
-                        pathname: '/admin/macro-ciclo',
-                        state: { macrocycleId: macrocycle._id }
-                    }}>
-                        <IconButton aria-label="edit">
-                            <EditIcon color="primary" />
-                        </IconButton>
-                    </Link>
-                    <IconButton aria-label="delete">
-                        <DeleteIcon />
-                    </IconButton>
-                </TableCell>
-            </TableRow>
+        return dataList.map((macrocycle, key) => (
+            <MacroCycleRow key={key}  macrocycle={macrocycle} />
         )
         )
     }
@@ -75,12 +46,12 @@ export default function MacroCycleList() {
             <GridItem xs={12} sm={12} md={12}>
                 <Card>
                     <CardHeader color="primary">
-                        <h4>Microciclos</h4>
+                        <h4>Macrociclos</h4>
                     </CardHeader>
                     <CardBody>
                         <Table
                             tableHeaderColor="primary"
-                            tableHead={["Nombre", "Fecha de inicio", "Fecha de fin", "Semanas"]}
+                            tableHead={["Expander","Nombre", "Fecha de inicio", "Fecha de fin", "Semanas", "Acciones"]}
                             tableRows={getRows(macrocycleList)}
                         />
                     </CardBody>
