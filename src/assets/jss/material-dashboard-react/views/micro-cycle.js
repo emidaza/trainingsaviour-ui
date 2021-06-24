@@ -25,8 +25,7 @@ const styles = (theme) => {
             paddingBottom: 0
         },
         turnsItem: {
-            paddingTop: 0,
-            paddingBottom: 0
+            padding: 0
         },
         workoutsButton: {
             marginRight: '5px'

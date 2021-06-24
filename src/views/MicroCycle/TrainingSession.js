@@ -55,8 +55,8 @@ export function TrainingSession(props) {
             <span className={classes.aerobicLoad}>Aerobico: {getLoad(FunctionalAreaTypes.aerobic)}m</span>
             <span className={classes.anaerobicLoad}>Anaerobico: {getLoad(FunctionalAreaTypes.anaerobic)}m</span>
 
-            <Button className={classes.workoutsButton} variant="contained" onClick={() => setWorkoutsOpen(!workoutsOpen)}>Trabajos</Button>
-            <Button variant="contained" startIcon={<PlaylistAddIcon />}
+            <Button size="small" className={classes.workoutsButton} variant="contained" onClick={() => setWorkoutsOpen(!workoutsOpen)}>Trabajos</Button>
+            <Button size="small" variant="contained" startIcon={<PlaylistAddIcon />}
                 onClick={() => props.showWorkoutDialog(undefined, trainingDayId, trainingSession.order)}>
                 Agregar
                 </Button>

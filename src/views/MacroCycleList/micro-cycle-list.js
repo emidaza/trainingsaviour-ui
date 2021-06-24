@@ -26,8 +26,7 @@ function MicroCycleList(props) {
                 <TableRow>
                     <TableCell>Init Date</TableCell>
                     <TableCell>End Date</TableCell>
-                    <TableCell align="right">Period</TableCell>
-                    <TableCell align="right">Objective</TableCell>
+                    <TableCell>Objective</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -35,7 +34,6 @@ function MicroCycleList(props) {
                     <TableRow key={index} className={classes.actionRow} onClick={() => navigateTo(microcycle)}>
                         <TableCell><DateField date={microcycle.initDate} /></TableCell>
                         <TableCell><DateField date={microcycle.endDate} /></TableCell>
-                        <TableCell>{microcycle.period}</TableCell>
                         <TableCell>{microcycle.objective}</TableCell>
                     </TableRow>
                 ))}

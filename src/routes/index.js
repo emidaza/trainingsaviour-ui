@@ -22,7 +22,6 @@ import LibraryBooks from "@material-ui/icons/LibraryBooks";
 import LocationOn from "@material-ui/icons/LocationOn";
 import Notifications from "@material-ui/icons/Notifications";
 import Person from "@material-ui/icons/Person";
-import Unarchive from "@material-ui/icons/Unarchive";
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
 import MacroCycle from "views/MacroCycle/macro-cycle.js";
@@ -34,7 +33,6 @@ import NotificationsPage from "views/Notifications/Notifications.js";
 import RTLPage from "views/RTLPage/RTLPage.js";
 import TableList from "views/TableList/TableList.js";
 import Typography from "views/Typography/Typography.js";
-import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
 
 const indexRoutes = [
@@ -123,14 +121,6 @@ const indexRoutes = [
     icon: Language,
     component: RTLPage,
     layout: "/rtl"
-  },
-  {
-    path: "/upgrade-to-pro",
-    name: "Upgrade To PRO",
-    rtlName: "التطور للاحترافية",
-    icon: Unarchive,
-    component: UpgradeToPro,
-    layout: "/admin"
   }
 ];
 

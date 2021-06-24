@@ -124,7 +124,7 @@ function MicroCycle() {
                                     <GridItem xs={12} sm={12} md={12}>
                                         <Grid container spacing={1}>
                                             {microCycle.trainingDays.map((t, i) =>
-                                                <Grid item key={i} xs={12} sm={6} md={4}>
+                                                <Grid item key={i} xs={12} sm={6} md={6} lg={4}>
                                                     <TrainingDay showWorkoutDialog={showEditModal} microCycleId={microCycle.microCycleId} data={t}></TrainingDay>
                                                 </Grid>
                                             )}
