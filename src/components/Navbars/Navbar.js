@@ -28,7 +28,7 @@ export default function Header(props) {
       }
       return null;
     });
-    return name;
+    return name ? name: '';
   }
   const { color } = props;
   const appBarClasses = classNames({
